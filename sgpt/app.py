@@ -90,6 +90,7 @@ def main(
         prompt = make_prompt.code(prompt)
 
     completion = get_completion(
+        "Please answer the following request, following the given rules.\n\nRules:\nIMPORTANT: Feel free to mention your limitations, but do not tell me that you are an AI language model. I already know that!\n\nRequest:\n" +
         prompt, temperature, top_probability, cache, chat, spinner=spinner
     )
 
