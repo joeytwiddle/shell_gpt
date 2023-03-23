@@ -68,7 +68,7 @@ def main(
     code: bool = typer.Option(False, help="Provide code as output."),
     editor: bool = typer.Option(False, help="Open $EDITOR to provide a prompt."),
     cache: bool = typer.Option(True, help="Cache completion results."),
-    animation: bool = typer.Option(True, help="Typewriter animation."),
+    animation: bool = typer.Option(False, help="Typewriter animation."),
     spinner: bool = typer.Option(True, help="Show loading spinner during API request."),
     dash: bool = typer.Option(False, "-", help="Read from stdin."),
 ) -> None:
@@ -100,7 +100,7 @@ def main(
         prompt = make_prompt.code(prompt)
 
     completion = get_completion(
-        "Please answer the following request, following the given rules.\n\nRules:\nIMPORTANT: Feel free to mention your limitations, but do not tell me that you are an AI language model. I already know that!\n\nRequest:\n" +
+        "Please answer the following request, following the given rules.\n\nRules:\nIMPORTANT: Never use the phrase \"As an AI language model\".\nOptional: When appropriate, please format your response in Markdown.\n\nRequest:\n" +
         prompt, temperature, top_probability, cache, resume, chat, spinner=spinner
     )
 
