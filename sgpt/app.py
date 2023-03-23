@@ -1,3 +1,8 @@
+# Put shell_gpt folder at the front of the import path
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+
 """
 shell-gpt: An interface to OpenAI's ChatGPT (GPT-3.5) API
 
@@ -12,10 +17,6 @@ API Key is stored locally for easy use in future runs.
 
 
 import os
-
-# Put shell_gpt folder at the front of the import path
-#import sys
-#sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 import typer
 
