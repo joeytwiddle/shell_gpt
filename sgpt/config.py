@@ -45,9 +45,12 @@ def init() -> None:
                 config[key] = value
 
 
-def get(key: str) -> str:
+def get(key: str, error_message: str = None) -> str:
     # Prioritize ENV variables.
     value = os.getenv(key) or config.get(key)
+    if not value and error_message:
+        print(error_message)
+        exit(1)
     assert value, UsageError(f"Config missing: {key}.")
     return value
 

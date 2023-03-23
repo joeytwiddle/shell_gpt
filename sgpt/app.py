@@ -36,7 +36,7 @@ def get_completion(
     chat: str,
 ):
     api_host = config.get("OPENAI_API_HOST")
-    api_key = config.get("OPENAI_API_KEY")
+    api_key = config.get("OPENAI_API_KEY", "Please configure or export OPENAI_API_KEY='...' You can get a key from https://platform.openai.com/account/api-keys")
     client = OpenAIClient(api_host, api_key)
     return client.get_completion(
         message=prompt,
