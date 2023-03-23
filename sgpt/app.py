@@ -67,6 +67,7 @@ def main(
     cache: bool = typer.Option(True, help="Cache completion results."),
     animation: bool = typer.Option(True, help="Typewriter animation."),
     spinner: bool = typer.Option(True, help="Show loading spinner during API request."),
+    dash: bool = typer.Option(False, "-", help="Read from stdin."),
 ) -> None:
     if list_chat:
         echo_chat_ids()
@@ -76,11 +77,11 @@ def main(
         return
 
     if not prompt and not editor:
-        if not sys.stdin.isatty():
+        if dash or not sys.stdin.isatty():
             prompt = sys.stdin.read()
         else:
             raise MissingParameter(param_hint="PROMPT", param_type="string")
-    elif prompt and not sys.stdin.isatty():
+    elif prompt and (dash or not sys.stdin.isatty()):
         stdin_data = sys.stdin.read()
         prompt = f"{stdin_data.strip()}\n{prompt}"
 
