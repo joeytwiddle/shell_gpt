@@ -13,6 +13,20 @@ You'll need an OpenAI API key, you can generate one [here](https://beta.openai.c
 
 If the`$OPENAI_API_KEY` environment variable is set it will be used, otherwise, you will be prompted for your key which will then be stored in `~/.config/shell_gpt/.sgptrc`.
 
+### Changeing API Key
+
+If you need to change your API key, run:
+
+```bash
+rm ~/.config/shell-gpt/api_key.txt
+```
+
+Followed by
+
+```bash
+sgpt "anything"
+```
+
 ## Usage
 `sgpt` has a variety of use cases, including simple queries, shell queries, and code queries.
 ### Simple queries
