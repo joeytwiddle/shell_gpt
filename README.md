@@ -280,3 +280,20 @@ python -m sgpt --help
 # or
 env PYTHONPATH="/full/path/to/this/repo" python -m sgpt --help
 ```
+
+On newer systems, you may see the message:
+```txt
+error: externally-managed-environment
+```
+In this situation, the recommendation is to use a virtual environment:
+```shell
+python -m venv .venv
+source .venv/bin/activate
+pip install -e .
+
+sgpt --help
+
+# You can also use these, without activating the environment
+/path/to/this/folder/.venv/bin/sgpt --help
+/path/to/this/folder/.venv/bin/python -m sgpt --help
+```
